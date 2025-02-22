@@ -4,7 +4,7 @@ const path = require('path');
 
 // Function to download the latest PaperMC build for a specific version
 const downloadLatestPaperMC = async (version) => {
-    const api = 'https://papermc.io/api/v2';
+    const api = 'https://api.papermc.io/v2';
     const projectName = 'paper'; // Project name
 
     try {
@@ -191,3 +191,5 @@ if (args[0] === 'install-version' && args[1]) {
 } else {
     console.error('Invalid command. Usage: node main.js install-version <version>');
 }
+
+module.exports.execute = downloadLatestPaperMC;
