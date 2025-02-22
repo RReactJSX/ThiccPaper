@@ -27,7 +27,6 @@ const startPaperMC = async (args) => {
     await startServerProcess(versionDir, currentVersion, args);
 };
 
-
 // Function to update server.properties
 const updateServerProperties = (versionDir, propertyName, value) => {
     const serverPropertiesPath = path.join(versionDir, 'server.properties');
@@ -49,13 +48,27 @@ const updateServerProperties = (versionDir, propertyName, value) => {
     }
 };
 
+// Function to check if the server is already running
+const isServerRunning = () => {
+    const lockFilePath = path.join(__dirname, 'server.lock');
+    return fs.existsSync(lockFilePath);
+};
+
 // Function to start the server process
 const startServerProcess = async (versionDir, currentVersion, args) => {
-    // Check if the server is already running by checking for a lock file
     const lockFilePath = path.join(__dirname, 'server.lock');
-    if (fs.existsSync(lockFilePath)) {
+
+    // Check if the server is already running
+    if (isServerRunning()) {
         console.log('Server is already running.');
         return;
+    }
+
+    // If the lock file exists but the server isn't running, clean up the lock file
+    if (fs.existsSync(lockFilePath)) {
+        console.log('Lock file found but the server is not running. Cleaning up...');
+        fs.unlinkSync(lockFilePath);
+        console.log('Lock file deleted.');
     }
 
     // Create a lock file to indicate that the server is running
