@@ -52,7 +52,7 @@ if ! command_exists java; then
 fi
 
 # Navigate to the application directory
-cd thiccpaper || { 
+cd /srv/ThiccPaper/ || { 
   error_occurred=true
   error_message+="Error: Failed to navigate to 'thiccpaper' directory.\n"
 }
