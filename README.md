@@ -1,7 +1,5 @@
 <img style="float: right;" src="ThiccPaperBanner.png">
 
-## A Lightweight PaperMC Overhead Utility
-
 ## Installing
 
 Paste the following in a debian-based linux terminal and watch the magic happen :)
