@@ -1,5 +1,7 @@
 <img style="float: right;" src="ThiccPaperBanner.png">
 
+A NodeJS-based CLI tool to containerize PaperMC
+
 ## Installing
 
 Paste the following in a debian-based linux terminal and watch the magic happen :)
